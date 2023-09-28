@@ -2,7 +2,7 @@
 import { PropsWithChildren } from 'react';
 import { Text, View, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { styles } from '../App';
+import { styles } from '../../App';
 
 type SectionProps = PropsWithChildren<{
     title: string;

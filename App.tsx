@@ -1,15 +1,15 @@
 
-import React from 'react';
+import React, { createContext, useRef } from 'react';
 
-import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { DrawerLayoutAndroid, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, ToastAndroid, useColorScheme, View } from 'react-native';
 
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
-import Footer from './src/shared/Footer';
-import Section from './src/components/Section';
-import Products from './src/components/Products';
-import Navbar from './src/shared/Navbar';
-
-
+import Navbar from './src/components/shared/Navbar/Navbar';
+import DrawerMenuNavbar from './src/components/shared/Navbar/DrawerMenuNavbar';
+import Footer from './src/components/shared/Footer';
+import HomeScreen from './src/components/screen/home/HomeScreen';
+import NavigationContainer from './src/navigators/NavigationContainer';
+const ShopProvider = createContext({})
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -18,51 +18,43 @@ function App(): JSX.Element {
     // backgroundColor: isDarkMode ? Colors.darker : "#232F3F",
   };
 
+  const drawerRef = useRef<DrawerLayoutAndroid>(null);
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        animated={true}
-        barStyle={isDarkMode ? 'light-content' : 'light-content'}
-        // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-        showHideTransition={'fade'}
-        hidden={true}
-      />
-      <Navbar />
-      <ScrollView
-        // contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
-        <Products />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-      <Footer />
-    </SafeAreaView>
+    <DrawerMenuNavbar drawerRef={drawerRef} >
+      <ShopProvider.Provider value={{}}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#F6F9FC' }}>
+          {/* <SafeAreaView style={backgroundStyle}> */}
+          <StatusBar
+            animated={true}
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+            showHideTransition={'fade'}
+            hidden={false}
+          />
+          <Navbar drawerRef={drawerRef} />
+          {/* <Navigation /> */}
+          <ScrollView
+            // contentInsetAdjustmentBehavior="automatic"
+            style={[
+              // backgroundStyle,
+              { paddingBottom: 80, paddingHorizontal: 16, display: 'flex' }]
+            }
+          >
+            <NavigationContainer />
+
+          </ScrollView>
+          <Footer />
+        </SafeAreaView>
+      </ShopProvider.Provider>
+    </DrawerMenuNavbar>
   );
 }
 
 export const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 32,
-    paddingHorizontal: 24,
+    // paddingHorizontal: 24,
   },
   sectionTitle: {
     fontSize: 24,
