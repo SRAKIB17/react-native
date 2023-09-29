@@ -56,7 +56,7 @@ const NavbarTitleBackButton = ({
                     </View>
 
                     <View style={{ width: "100%", display: 'flex', justifyContent: "center", alignContent: 'center', flexDirection: 'row' }}>
-                        <Text style={[global_styles.text_2xl, global_styles.font_bold, { color: colors.primary_text }]}
+                        <Text style={[global_styles.text_xl, global_styles.font_bold, { color: colors.primary_text }]}
                         >
                             {
                                 title

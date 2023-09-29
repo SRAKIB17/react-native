@@ -30,7 +30,7 @@ function App(): JSX.Element {
       <NavigationContainer>
         <DrawerMenuNavbar >
           <ShopProvider.Provider value={{}}>
-            <SafeAreaView style={{ flex: 1, backgroundColor: '#F6F9FC' }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
               {/* <SafeAreaView style={backgroundStyle}> */}
               <StatusBar
                 animated={true}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
-import { default_theme, global_styles } from '../../styles/global';
+import { global_styles } from '../../styles/global';
+import colors from '../../utils/colors';
 
 interface ButtonProps {
     text?: string,
@@ -65,6 +66,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: default_theme.border.borderColor,
+        borderColor: colors.border_color,
     },
 })

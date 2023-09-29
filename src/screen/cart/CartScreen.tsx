@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Button, Dimensions, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import TouchableOpacityButton from '../../components/button/TouchableOpacityButton';
 import { assets_images } from '../../assets/assets_images';
 import CartProductItem from './components/CartProductItem';
@@ -132,10 +132,12 @@ export default function CartScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 16,
+        paddingTop: 16,
         display: 'flex',
         flexDirection: 'column',
-        gap: 40
+        gap: 40,
+        flex: 1,
+        marginHorizontal: 16,
     },
     title: {
         display: 'flex',

@@ -14,6 +14,7 @@ export interface translateInterface {
         "my_wishlists": string,
         "shipping_address": string,
         "support_tickets": string,
+        "settings": string,
         "my_profile": string,
         "log_out": string,
     },
@@ -22,6 +23,9 @@ export interface translateInterface {
     },
     my_orders: {
         "my_orders": string
+    },
+    settings: {
+        "change_language": string
     }
 }
 
@@ -43,6 +47,7 @@ export const translate = {
             "shipping_address": "শিপিং অ্যাড্রেস",
             "support_tickets": "সাপোর্ট টিকেট",
             "my_profile": "আমার প্রোফাইল",
+            "settings": "সেটিংস",
             "log_out": "লগ আউট"
         },
         "my_carts": {
@@ -50,6 +55,9 @@ export const translate = {
         },
         "my_orders": {
             "my_orders": "আমার অর্ডার"
+        },
+        "settings": {
+            "change_language": "ভাষা পরিবর্তন করুন"
         }
     },
 
@@ -70,6 +78,7 @@ export const translate = {
             "shipping_address": "Shipping Address",
             "support_tickets": "Support Tickets",
             "my_profile": "My Profile",
+            "settings": "Settings",
             "log_out": "Log out"
         },
         "my_carts": {
@@ -77,6 +86,9 @@ export const translate = {
         },
         "my_orders": {
             "my_orders": "My Orders"
+        },
+        "settings": {
+            "change_language": "Change Language"
         }
     }
 }

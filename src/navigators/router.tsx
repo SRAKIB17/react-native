@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import CartScreen from "../screen/cart/CartScreen";
-import FavoriteScreen from "../screen/favorite/FavoriteScreen";
 import HomeScreen from "../screen/home/HomeScreen";
 import SignupScreen from "../screen/signup/SignupScreen";
 import { NavigationProvider } from "./NavigationContainer";
@@ -9,13 +8,15 @@ import ProfileScreen from "../screen/profile/ProfileScreen";
 import { assets_images } from "../assets/assets_images";
 import NavbarTitleBackButton from "../components/shared/Navbar/NavbarTitleBackButton";
 import OrderScreen from "../screen/order/OrderScreen";
+import SettingsScreen from "../screen/settings/SettingsScreen";
+import { WishlistScreen } from "../screen/wishlist/WishlistScreen";
 
 
 export default function Router() {
     const { translate, pathname, drawerRef } = useContext(NavigationProvider);
     const {
         my_carts: { my_carts },
-        profile_screen: { my_profile, my_wishlists },
+        profile_screen: { my_profile, my_wishlists, settings },
         my_orders: { my_orders }
     } = translate
 
@@ -38,7 +39,7 @@ export default function Router() {
                 key="wishlist_nav"
                 backward="/profile"
             />,
-            component: <FavoriteScreen key='wishlist' />,
+            component: <WishlistScreen key='wishlist' />,
         },
         {
             light: assets_images.cart_light,
@@ -66,6 +67,7 @@ export default function Router() {
             />,
             component: <OrderScreen key='my_orders' />
         },
+
         {
             light: assets_images.profile_light,
             dark: assets_images.profile_dark,
@@ -79,6 +81,22 @@ export default function Router() {
             />,
             component: <ProfileScreen key='my_profile' />
         },
+
+        {
+            light: assets_images.profile_light,
+            dark: assets_images.profile_dark,
+            title: "Settings",
+            link: "/settings",
+            navbar: <NavbarTitleBackButton
+                drawerRef={drawerRef}
+                title={settings}
+                key="settings_nav"
+                backward="/profile"
+            />,
+            component: <SettingsScreen key='settings' />
+        },
+
+
     ];
 
     return router.find(component => component.link == pathname)

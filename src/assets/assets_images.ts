@@ -20,4 +20,8 @@ export const assets_images = {
     "support_ticket_light": require('./images/support_ticket_light.png'),
     "log_out_dark": require('./images/log_out_dark.png'),
     "log_out_light": require('./images/log_out_light.png'),
+    "settings_light": require('./images/settings_light.png'),
+    "settings_dark": require('./images/settings_dark.png'),
+    "language_light": require('./images/language_light.png'),
+    "language_dark": require('./images/language_dark.png'),
 }

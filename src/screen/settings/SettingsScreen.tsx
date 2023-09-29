@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { Image, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
 import translate_each_word from '../../db/translate_each_word';
-import { default_theme, global_styles } from '../../styles/global';
+import { global_styles } from '../../styles/global';
 import { assets_images } from '../../assets/assets_images';
+import LanguageSettings from './components/LanguageSettings';
 import colors from '../../utils/colors';
 
 const user_info = {
@@ -12,10 +13,13 @@ const user_info = {
     profile: require('../../assets/images/male_avatar.png')
 }
 
-export default function ProfileScreen() {
+export default function SettingsScreen() {
     const { navigate, pathname, translate } = useContext(NavigationProvider)
     const { my_account_menu } = translate_each_word()
-    const { my_profile, log_out } = translate.profile_screen
+    const { change_language } = translate.settings
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
         <View style={styles.container}>
             <View style={{ display: 'flex', gap: 16 }}>
@@ -39,46 +43,14 @@ export default function ProfileScreen() {
 
                 </View>
             </View>
+
             <View style={{ borderTopColor: colors.border_color, borderTopWidth: 0.5 }}>
-                {
-                    my_account_menu?.map((r: any, index) => {
-                        // const check = pathname === r.link;
-                        return (
-                            <View key={index}>
-                                <TouchableOpacity onPress={() => navigate(r?.link)}   >
-                                    <View style={styles.button}>
-                                        <View style={styles.button_title_image}>
-                                            <View>
-                                                <Image
-                                                    source={r?.dark}
-                                                    style={{
-                                                        height: 20, width: 20, objectFit: 'contain',
-                                                    }}
-                                                />
-                                            </View>
-                                            <View>
-                                                <Text style={global_styles.text_lg}>
-                                                    {
-                                                        r?.title
-                                                    }
-                                                </Text>
-                                            </View>
-                                        </View>
-                                        <View>
-                                            <Image
-                                                source={assets_images.arrow_right_grey}
-                                                style={{
-                                                    height: 16, objectFit: 'contain',
-                                                }}
-                                            />
-                                        </View>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
-                }
+
                 <View>
+                    <LanguageSettings button={styles.button} button_title_image={styles.button_title_image} />
+                </View>
+
+                {/* <View>
                     <TouchableOpacity
                         onPress={() => navigate("r?.link")}
                     // style={{ marginTop: -48 }}
@@ -113,7 +85,7 @@ export default function ProfileScreen() {
                             </View>
                         </View>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
         </View>
     );

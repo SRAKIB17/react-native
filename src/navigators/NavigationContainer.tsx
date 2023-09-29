@@ -37,12 +37,27 @@ export default function NavigationContainer({ children }: { children: React.Reac
             setScreen('/home')
         }
     })
+    const [language, setLanguage] = useState<translateInterface>(translate?.en)
+
+    useEffect(() => {
+        setLanguage(translate?.en)
+        return () => { }
+    }, [])
+
+    AsyncStorage.getItem('language').then(r => {
+        if (r == 'bn') {
+            setLanguage(translate?.bn)
+        }
+        else {
+            setLanguage(translate?.en)
+        }
+    })
 
     return (
         <NavigationProvider.Provider value={{
             navigate: navigate,
             pathname: screen,
-            translate: translate?.bn,
+            translate: language,
             drawerRef: drawerRef
         }}>
             {

@@ -10,7 +10,7 @@ const translate_each_word = () => {
             button_navigate: { home, profile, cart, wishlist }
         },
         profile_screen: {
-            my_carts, my_orders, my_wishlists, notifications, shipping_address, support_tickets
+            my_carts, my_orders, my_wishlists, notifications, shipping_address, support_tickets, settings
         }
     } = translate
 
@@ -83,6 +83,12 @@ const translate_each_word = () => {
             link: '/account/support-tickets',
             light: assets_images.support_ticket_light,
             dark: assets_images.support_ticket_dark,
+        },
+        {
+            title: settings,
+            link: '/settings',
+            light: assets_images.settings_light,
+            dark: assets_images.settings_dark,
         },
     ]
 
