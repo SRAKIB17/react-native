@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } f
 import { default_theme, global_styles } from '../../styles/global';
 
 interface ButtonProps {
-    text: string,
+    text?: string,
     onPress: () => void;
     containerStyles?: object;
     disabled?: boolean,
@@ -19,7 +19,7 @@ export default function TouchableOpacityButton({
 }: ButtonProps) {
 
     return (
-        <TouchableHighlight
+        <TouchableOpacity
             onPress={onPress}
             disabled={disabled}
         >
@@ -41,14 +41,17 @@ export default function TouchableOpacityButton({
                     }
                 </View>
                 <View>
-                    <Text style={[textStyle, global_styles.text_lg]}>
-                        {
-                            text
-                        }
-                    </Text>
+                    {
+                        Boolean(text) &&
+                        <Text style={[textStyle, global_styles.text_lg]}>
+                            {
+                                text
+                            }
+                        </Text>
+                    }
                 </View>
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     );
 };
 

@@ -6,8 +6,7 @@ import Router from './router';
 const Navigator = () => {
     const { pathname, navigate, translate } = useContext(NavigationProvider)
     const router = Router()
-    const renderScreen = router.find(component => component.link == pathname)?.component
-    return renderScreen
+    return router?.component
 };
 
 export default Navigator;

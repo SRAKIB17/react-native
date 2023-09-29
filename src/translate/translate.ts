@@ -14,7 +14,14 @@ export interface translateInterface {
         "my_wishlists": string,
         "shipping_address": string,
         "support_tickets": string,
-        "my_profile": string
+        "my_profile": string,
+        "log_out": string,
+    },
+    my_carts: {
+        my_carts: string
+    },
+    my_orders: {
+        "my_orders": string
     }
 }
 
@@ -35,9 +42,17 @@ export const translate = {
             "my_wishlists": "আমার ইচ্ছে তালিকা",
             "shipping_address": "শিপিং অ্যাড্রেস",
             "support_tickets": "সাপোর্ট টিকেট",
-            "my_profile": "আমার প্রোফাইল"
+            "my_profile": "আমার প্রোফাইল",
+            "log_out": "লগ আউট"
+        },
+        "my_carts": {
+            "my_carts": "আমার কার্ট"
+        },
+        "my_orders": {
+            "my_orders": "আমার অর্ডার"
         }
     },
+
     "en": {
         "footer": {
             "button_navigate": {
@@ -49,12 +64,19 @@ export const translate = {
         },
         "profile_screen": {
             "notifications": "Notifications",
-            "my_orders": "My orders",
-            "my_carts": "My carts",
-            "my_wishlists": "My wishlists",
-            "shipping_address": "শিপিং অ্যাড্রেস",
+            "my_orders": "My Orders",
+            "my_carts": "My Carts",
+            "my_wishlists": "My Wishlists",
+            "shipping_address": "Shipping Address",
             "support_tickets": "Support Tickets",
-            "my_profile": "My profile"
+            "my_profile": "My Profile",
+            "log_out": "Log out"
+        },
+        "my_carts": {
+            "my_carts": "My Carts"
+        },
+        "my_orders": {
+            "my_orders": "My Orders"
         }
     }
 }

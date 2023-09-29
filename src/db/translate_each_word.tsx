@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { NavigationProvider } from '../navigators/NavigationContainer';
 import { assets_images } from '../assets/assets_images';
 
-const images_database = () => {
+const translate_each_word = () => {
     const { navigate, pathname, translate } = useContext(NavigationProvider)
 
     const {
@@ -25,19 +25,19 @@ const images_database = () => {
             light: assets_images.wishlist_light,
             dark: assets_images.wishlist_dark,
             title: wishlist,
-            link: "/favorite"
+            link: "/wishlists"
         },
         {
             light: assets_images.cart_light,
             dark: assets_images.cart_dark,
             title: cart,
-            link: "/cart",
+            link: "/carts",
         },
         {
             light: assets_images.profile_light,
             dark: assets_images.profile_dark,
             title: profile,
-            link: "/account",
+            link: "/profile",
         }
     ]
 
@@ -50,25 +50,25 @@ const images_database = () => {
         },
         {
             title: notifications,
-            link: '/account/notifications',
+            link: '/notifications',
             light: assets_images.cart_light,
             dark: assets_images.cart_dark,
         },
         {
             title: my_orders,
-            link: '/account/orders',
+            link: '/orders',
             light: assets_images.order_light,
             dark: assets_images.order_dark,
         },
         {
             title: my_wishlists,
-            link: '/account/wishlist',
+            link: '/wishlists',
             light: assets_images.wishlist_light,
             dark: assets_images.wishlist_dark,
         },
         {
             title: my_carts,
-            link: '/account/carts',
+            link: '/carts',
             light: assets_images.cart_light,
             dark: assets_images.cart_dark,
         },
@@ -92,4 +92,4 @@ const images_database = () => {
     }
 };
 
-export default images_database;
+export default translate_each_word;

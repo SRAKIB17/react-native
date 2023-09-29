@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useRef, useState } from 'react';
+import React, { PropsWithChildren, useContext, useRef, useState } from 'react';
 import {
     Button,
     DrawerLayoutAndroid,
@@ -6,12 +6,13 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
+import { NavigationProvider } from '../../../navigators/NavigationContainer';
 
 type SectionProps = PropsWithChildren<{
-    drawerRef: React.RefObject<DrawerLayoutAndroid>
+    // drawerRef: React.RefObject<DrawerLayoutAndroid>
 }>;
-const DrawerMenuNavbar = ({ drawerRef, children }: SectionProps): JSX.Element => {
-
+const DrawerMenuNavbar = ({ children }: SectionProps): JSX.Element => {
+    const { drawerRef } = useContext(NavigationProvider)
     const drawer = useRef<DrawerLayoutAndroid>(null);
     const navigationView = () => (
         <View style={[styles.container, styles.navigationContainer]}>

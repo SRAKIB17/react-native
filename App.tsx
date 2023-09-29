@@ -4,7 +4,7 @@ import React, { createContext, useRef } from 'react';
 import { DrawerLayoutAndroid, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, ToastAndroid, useColorScheme, View } from 'react-native';
 
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
-import Navbar from './src/components/shared/Navbar/Navbar';
+import MainNavbar from './src/components/shared/Navbar/MainNavbar';
 import DrawerMenuNavbar from './src/components/shared/Navbar/DrawerMenuNavbar';
 import Footer from './src/components/shared/Footer';
 import HomeScreen from './src/screen/home/HomeScreen';
@@ -12,6 +12,7 @@ import NavigationContainer from './src/navigators/NavigationContainer';
 import Navigator from './src/navigators/Navigator';
 import AuthenticationCheckProvider from './src/context/Authentication/AuthenticationCheckProvider';
 import colors from './src/utils/colors';
+import Navbar from './src/components/shared/Navbar/Navbar';
 
 const ShopProvider = createContext({})
 function App(): JSX.Element {
@@ -27,7 +28,7 @@ function App(): JSX.Element {
   return (
     <AuthenticationCheckProvider>
       <NavigationContainer>
-        <DrawerMenuNavbar drawerRef={drawerRef} >
+        <DrawerMenuNavbar >
           <ShopProvider.Provider value={{}}>
             <SafeAreaView style={{ flex: 1, backgroundColor: '#F6F9FC' }}>
               {/* <SafeAreaView style={backgroundStyle}> */}
@@ -39,7 +40,8 @@ function App(): JSX.Element {
                 showHideTransition={'fade'}
                 hidden={false}
               />
-              <Navbar drawerRef={drawerRef} />
+              <Navbar />
+
               <ScrollView
                 // contentInsetAdjustmentBehavior="automatic"
                 style={[

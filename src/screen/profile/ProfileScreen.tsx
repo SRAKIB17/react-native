@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
-import images_database from '../../db/translate_each_word';
+import translate_each_word from '../../db/translate_each_word';
 import { default_theme, global_styles } from '../../styles/global';
 import { assets_images } from '../../assets/assets_images';
 
@@ -13,24 +13,19 @@ const user_info = {
 
 export default function ProfileScreen() {
     const { navigate, pathname, translate } = useContext(NavigationProvider)
-    const { my_account_menu } = images_database()
-    const { my_profile } = translate.profile_screen
-    // const { home, profile, cart, favorite } = translate?.footer?.button_navigate
+    const { my_account_menu } = translate_each_word()
+    const { my_profile, log_out } = translate.profile_screen
+    // const { home, profile, cart, log_out } = translate?.footer?.button_navigate
     return (
         <View style={styles.container}>
             <View style={{ display: 'flex', gap: 16 }}>
-                <Text style={[global_styles.text_4xl, global_styles.font_bold]}>
-                    {
-                        my_profile
-                    }
-                </Text>
                 <View style={{ display: 'flex', flexDirection: "row", alignItems: 'center', gap: 16 }}>
                     <View>
                         <Image source={user_info.profile} style={{ width: 64, height: 64 }} />
                     </View>
 
                     <View>
-                        <Text style={[global_styles.text_2xl, global_styles.font_medium]}>
+                        <Text style={[global_styles.text_xl, global_styles.font_medium]}>
                             {
                                 user_info?.name
                             }
@@ -101,7 +96,9 @@ export default function ProfileScreen() {
                                 </View>
                                 <View>
                                     <Text style={global_styles.text_lg}>
-                                        Log out
+                                        {
+                                            log_out
+                                        }
                                     </Text>
                                 </View>
                             </View>

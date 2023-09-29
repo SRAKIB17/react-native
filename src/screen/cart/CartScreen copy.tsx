@@ -48,7 +48,7 @@ const products = [
         }
     },
     {
-        id: '4',
+        id: '1',
         quantity: 1,
         item: {
             id: '1',
@@ -61,7 +61,7 @@ const products = [
         }
     },
     {
-        id: '244',
+        id: '2',
         quantity: 2,
         item: {
             id: '2',
@@ -74,7 +74,7 @@ const products = [
         }
     },
     {
-        id: '345',
+        id: '3',
         quantity: 1,
         option: 'Space Grey',
         item: {
@@ -97,6 +97,31 @@ export default function CartScreen() {
     return (
         <SafeAreaView>
             <View style={styles.container}>
+                <View style={styles.title}>
+                    <View style={{ position: 'absolute' }}>
+                        <TouchableOpacityButton
+                            onPress={() => navigate('/profile')}
+                            image={assets_images.arrow_right_dark}
+                            imageStyle={{ transform: [{ rotate: "180deg" }] }}
+                            containerStyles={{
+                                backgroundColor: 'transparent',
+                                width: 36,
+                                height: 36,
+                                borderWidth: 0,
+                            }}
+                        />
+                    </View>
+                    <View style={{ width: "100%", display: 'flex', justifyContent: "center", alignContent: 'center', flexDirection: 'row' }}>
+                        <View>
+                            <Text style={[global_styles.text_3xl, global_styles.font_bold]}
+                            >
+                                {
+                                    my_carts
+                                }
+                            </Text>
+                        </View>
+                    </View>
+                </View>
 
                 <View style={styles.page} >
                     {/* subtotal and checkout  */}

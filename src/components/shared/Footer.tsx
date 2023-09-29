@@ -2,12 +2,12 @@ import { useContext, useState } from 'react';
 import { View, Text, Button, TouchableHighlight, TouchableOpacityBase, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
 import Colors from '../../utils/colors';
-import images_database from '../../db/translate_each_word';
+import translate_each_word from '../../db/translate_each_word';
 
 
 export default function Footer() {
     const { navigate, pathname, translate } = useContext(NavigationProvider)
-    const { footer: footerMenuButton } = images_database()
+    const { footer: footerMenuButton } = translate_each_word()
     return (
         <View style={styles.footer}>
             {
