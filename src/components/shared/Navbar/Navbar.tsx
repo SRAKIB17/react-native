@@ -1,7 +1,12 @@
 import React, { useRef, useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, View, Text, Button, TouchableHighlight, DrawerLayoutAndroid } from 'react-native';
+import Colors from '../../../utils/colors';
+import images_database from '../../../db/translate_each_word';
+import { assets_images } from '../../../assets/assets_images';
+
 
 const Navbar = ({ drawerRef }: { drawerRef: React.RefObject<DrawerLayoutAndroid> }) => {
+
 
     const onPress = () => {
         return drawerRef.current?.openDrawer()
@@ -21,25 +26,35 @@ const Navbar = ({ drawerRef }: { drawerRef: React.RefObject<DrawerLayoutAndroid>
             <View style={styles.navbar}>
 
                 <View>
-                    <Text style={{ fontSize: 20, fontWeight: '600', color: 'black' }}>
-                        Gemstore
+                    <Text style={{ fontSize: 24, fontWeight: '600', color: Colors.primary_text }}>
+                        Ahaliyas
                     </Text>
                 </View>
 
-                <View>
-                    <Text style={{ fontSize: 20, fontWeight: '600', color: 'black' }}>
-                        Gemstore
-                    </Text>
-                </View>
-                <View>
-                    <TouchableHighlight onPress={onPress}>
-                        <View style={styles.button}>
-                            <Image
-                                source={require('../../../../assets/Logo.png')}
-                                style={{ height: 40, width: 40 }}
-                            />
-                        </View>
-                    </TouchableHighlight>
+                <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                    <View>
+                        <TouchableHighlight onPress={onPress}>
+                            <View
+                                style={styles.navbar_button}
+                            >
+                                <Image
+                                    source={assets_images.search_white}
+                                    style={{ height: 28, width: 28 }}
+                                />
+                            </View>
+                        </TouchableHighlight>
+                    </View>
+                    <View>
+                        <TouchableHighlight onPress={onPress}>
+                            <View
+                                style={styles.navbar_button}
+                            >
+                                <View style={{ height: 4, width: 24, backgroundColor: Colors.white }}></View>
+                                <View style={{ height: 4, width: 24, backgroundColor: Colors.white }}></View>
+                                <View style={{ height: 4, width: 24, backgroundColor: Colors.white }}></View>
+                            </View>
+                        </TouchableHighlight>
+                    </View>
                 </View>
                 {/* <Button title='fsdf' /> */}
             </View>
@@ -51,16 +66,36 @@ const Navbar = ({ drawerRef }: { drawerRef: React.RefObject<DrawerLayoutAndroid>
 const styles = StyleSheet.create({
     navbar: {
         display: 'flex',
+        borderBottomColor: Colors.white,
+        borderBottomWidth: 2,
+        backgroundColor: Colors.primary,
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
         justifyContent: 'space-between',
         color: 'black',
-        height: 60,
+        height: 64,
         paddingLeft: 10,
         paddingRight: 10,
         alignContent: 'space-between',
-        backgroundColor: 'white',
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 1.00,
+        elevation: 3,
+
+    },
+    navbar_button: {
+        width: 40,
+        padding: 8,
+        backgroundColor: Colors.primary,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4
     },
 
     container: {
@@ -71,7 +106,7 @@ const styles = StyleSheet.create({
 
     button: {
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
+        backgroundColor: 'white',
         padding: 10,
     },
 

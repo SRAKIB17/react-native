@@ -1,39 +1,40 @@
-import React, { PropsWithChildren, createContext, useState } from 'react';
-import { SafeAreaView } from 'react-native';
+import React, { PropsWithChildren, createContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { router } from './router';
-import Navigator from './Navigator';
 
-type SectionProps = PropsWithChildren<{
-    // title: string;
-}>;
+import { translate, translateInterface } from '../translate/translate';
 
-export const NavigationProvider = createContext<any>(null)
 
-export default function NavigationContainer() {
-    // export default function NavigationContainer({ children }: { children: React.ReactNode }): JSX.Element {
+export const NavigationProvider = createContext<{
+    navigate: (value: string) => void,
+    pathname: string,
+    translate: translateInterface,
+}>({
+    navigate: () => { },
+    pathname: '',
+    translate: translate?.en
+})
 
-    const path = router.map(r => r.link)
-    const [screen, setScreen] = useState('Home');
-
-    const check = (value: string) => {
-        return path?.includes(value)
-    }
-
-    const navigate = (value: string) => {
-        console.log(value)
-        return
-        // try {
-        //     await AsyncStorage.setItem('my-key', value);
-        //     const x = await AsyncStorage.getItem('my-key')
-        //     console.log(x)
-        // } catch (e) {
-        //     // saving error
-        // }
+export default function NavigationContainer({ children }: { children: React.ReactNode }): JSX.Element {
+    const [screen, setScreen] = useState('/home');
+    const navigate = async (value: string) => {
+        setScreen(value)
+        await AsyncStorage.setItem('link', value)
     };
+
+    AsyncStorage.getItem('link').then(r => {
+        if (r) {
+            setScreen(r)
+        }
+        else {
+            setScreen('/home')
+        }
+    })
+
     return (
-        <NavigationProvider.Provider value={{ navigate, check }}>
-            <Navigator screen={screen} />
+        <NavigationProvider.Provider value={{ navigate, pathname: screen, translate: translate?.bn }}>
+            {
+                children
+            }
         </NavigationProvider.Provider>
     );
 }

@@ -1,61 +1,22 @@
 import { useContext, useState } from 'react';
 import { View, Text, Button, TouchableHighlight, TouchableOpacityBase, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
-
-const footerMenuButton = [
-    {
-        light: require('../../assets/home-light.png'),
-        dark: require('../../assets/home-dark.png'),
-        title: "Home",
-        link: "/fsf",
-        value: 'home',
-    },
-    {
-        light: require('../../assets/favorite-light.png'),
-        dark: require('../../assets/favorite-dark.png'),
-        title: "Favorite",
-        link: "favorite"
-    },
-    {
-        light: require('../../assets/cart-light.png'),
-        dark: require('../../assets/cart-dark.png'),
-        title: "Cart",
-        link: "/fsf",
-        value: 'cart',
-    },
-    {
-        light: require('../../assets/profile-light.png'),
-        dark: require('../../assets/profile-dark.png'),
-        title: "Account",
-        link: "/fsf",
-        value: 'account',
-    }
-]
-
-function Footer() {
-
-    const [select, setSelect] = useState<string>();
-    // const { navigate, check } = useContext(NavigationProvider)
+import Colors from '../../utils/colors';
+import images_database from '../../db/translate_each_word';
 
 
-    // const handleLinkPress = async (value: string) => {
-    //     await navigate(value)
-    //     setSelect(value)
-    // };
-
-
+export default function Footer() {
+    const { navigate, pathname, translate } = useContext(NavigationProvider)
+    const { footer: footerMenuButton } = images_database()
     return (
         <View style={styles.footer}>
             {
                 footerMenuButton?.map((r: any, index) => {
-                    const check = select === r.value;
+                    const check = pathname === r.link;
                     return (
                         <View key={index}>
                             <TouchableOpacity
-                                onPress={() => {
-                                    // handleLinkPress(r?.value),
-                                    // navigate('sfsdflsdl')
-                                }}
+                                onPress={() => navigate(r?.link)}
                                 // style={{ marginTop: -48 }}
                                 disabled={check}
                             >
@@ -84,27 +45,13 @@ function Footer() {
                 })
             }
 
-            {/* <View>
-                <TouchableOpacity
-                    onPress={() => console.log(43)}
-                // style={{ marginTop: -48 }}
-                >
-                    <View style={styles.select_button}
-                    >
-                        <Image
-                            source={}
-                            style={{ height: 40, width: 40 }}
-                        />
-                    </View>
-                </TouchableOpacity>
-            </View> */}
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     footer: {
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
         borderTopEndRadius: 24,
         borderTopStartRadius: 24,
         padding: 16,
@@ -123,9 +70,7 @@ const styles = StyleSheet.create({
         shadowRadius: 1.00,
         elevation: 1,
 
-        bottom: 0,
         height: 64,
-        // padding: 10,
         width: '100%',
     },
     select_button: {
@@ -135,26 +80,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: 12,
         borderRadius: 99999,
-        backgroundColor: '#232F3F',
-
-    },
-    // select_button: {
-    //     // marginTop: -48,
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     flexDirection: 'column',
-    //     height: 48,
-    //     width: 48,
-    //     padding: 12,
-    //     borderRadius: 99999,
-    //     backgroundColor: '#232F3F'
-    // },
-
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        paddingHorizontal: 10,
+        backgroundColor: Colors.primary,
     },
 
     button: {
@@ -164,22 +90,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         height: 48,
         width: 48,
-        padding: 12,
-    },
-
-    countContainer: {
-        alignItems: 'center',
-        padding: 10,
-    },
-    countText: {
-        color: '#FF00FF',
-    },
-    header: {
-        width: '100%',
-        flexDirection: 'row',
-        alignContent: 'center',
-        justifyContent: 'center',
-        padding: 20,
+        padding: 4,
     },
     buttonGPlusStyle: {
         flexDirection: 'row',
@@ -219,4 +130,3 @@ const styles = StyleSheet.create({
         height: 40,
     },
 });
-export default Footer;

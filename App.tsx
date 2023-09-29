@@ -7,47 +7,54 @@ import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions }
 import Navbar from './src/components/shared/Navbar/Navbar';
 import DrawerMenuNavbar from './src/components/shared/Navbar/DrawerMenuNavbar';
 import Footer from './src/components/shared/Footer';
-import HomeScreen from './src/components/screen/home/HomeScreen';
+import HomeScreen from './src/screen/home/HomeScreen';
 import NavigationContainer from './src/navigators/NavigationContainer';
+import Navigator from './src/navigators/Navigator';
+import AuthenticationCheckProvider from './src/context/Authentication/AuthenticationCheckProvider';
+import colors from './src/utils/colors';
+
 const ShopProvider = createContext({})
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : "white",
     // backgroundColor: isDarkMode ? Colors.darker : "#232F3F",
   };
-
   const drawerRef = useRef<DrawerLayoutAndroid>(null);
-  return (
-    <DrawerMenuNavbar drawerRef={drawerRef} >
-      <ShopProvider.Provider value={{}}>
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#F6F9FC' }}>
-          {/* <SafeAreaView style={backgroundStyle}> */}
-          <StatusBar
-            animated={true}
-            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-            backgroundColor={backgroundStyle.backgroundColor}
-            showHideTransition={'fade'}
-            hidden={false}
-          />
-          <Navbar drawerRef={drawerRef} />
-          {/* <Navigation /> */}
-          <ScrollView
-            // contentInsetAdjustmentBehavior="automatic"
-            style={[
-              // backgroundStyle,
-              { paddingBottom: 80, paddingHorizontal: 16, display: 'flex' }]
-            }
-          >
-            <NavigationContainer />
 
-          </ScrollView>
-          <Footer />
-        </SafeAreaView>
-      </ShopProvider.Provider>
-    </DrawerMenuNavbar>
+  return (
+    <AuthenticationCheckProvider>
+      <NavigationContainer>
+        <DrawerMenuNavbar drawerRef={drawerRef} >
+          <ShopProvider.Provider value={{}}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#F6F9FC' }}>
+              {/* <SafeAreaView style={backgroundStyle}> */}
+              <StatusBar
+                animated={true}
+                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                backgroundColor={colors.primary}
+                // backgroundColor={backgroundStyle.backgroundColor}
+                showHideTransition={'fade'}
+                hidden={false}
+              />
+              <Navbar drawerRef={drawerRef} />
+              <ScrollView
+                // contentInsetAdjustmentBehavior="automatic"
+                style={[
+                  // backgroundStyle,
+                  { paddingBottom: 80, display: 'flex' }]
+                }
+              >
+                <Navigator />
+              </ScrollView>
+              <Footer />
+            </SafeAreaView>
+          </ShopProvider.Provider>
+        </DrawerMenuNavbar>
+      </NavigationContainer>
+    </AuthenticationCheckProvider>
   );
 }
 

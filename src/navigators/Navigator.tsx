@@ -1,27 +1,13 @@
-// Navigator.js
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 
+import { NavigationProvider } from './NavigationContainer';
+import Router from './router';
 
-
-
-import HomeScreen from '../components/screen/home/HomeScreen';
-
-const Navigator = ({ screen }: { screen: string }) => {
-
-    const renderScreen = () => {
-        switch (screen) {
-            // case 'Home':
-            //     return <HomeStackScreen setScreen={setScreen} />;
-            // case 'About':
-            //     return <AboutScreen setScreen={setScreen} />;
-            // case 'Settings':
-            //     return <SettingsScreen setScreen={setScreen} />;
-            default:
-                return <HomeScreen />;
-        }
-    };
-
-    return renderScreen();
+const Navigator = () => {
+    const { pathname, navigate, translate } = useContext(NavigationProvider)
+    const router = Router()
+    const renderScreen = router.find(component => component.link == pathname)?.component
+    return renderScreen
 };
 
 export default Navigator;
