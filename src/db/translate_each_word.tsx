@@ -6,12 +6,7 @@ const translate_each_word = () => {
     const { navigate, pathname, translate } = useContext(NavigationProvider)
 
     const {
-        footer: {
-            button_navigate: { home, profile, cart, wishlist }
-        },
-        profile_screen: {
-            my_carts, my_orders, my_wishlists, notifications, shipping_address, support_tickets, settings
-        }
+        home, profile, cart, wishlist, account_information, my_carts, my_orders, my_wishlists, notifications, shipping_address, support_tickets, settings
     } = translate
 
     const footerMenuButton = [
@@ -43,10 +38,11 @@ const translate_each_word = () => {
 
     const my_account_menu = [
         {
-            title: "My Account",
-            link: '/account',
-            light: assets_images.cart_light,
-            dark: assets_images.cart_dark,
+            title: account_information,
+            link: '/account-information',
+            light: assets_images.info_light,
+            dark: assets_images.info_dark,
+
         },
         {
             title: notifications,

@@ -24,4 +24,6 @@ export const assets_images = {
     "settings_dark": require('./images/settings_dark.png'),
     "language_light": require('./images/language_light.png'),
     "language_dark": require('./images/language_dark.png'),
+    "info_dark": require('./images/info_dark.png'),
+    "info_light": require('./images/info_light.png'),
 }

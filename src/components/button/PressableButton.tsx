@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 import { global_styles } from '../../styles/global';
 import colors from '../../utils/colors';
 
@@ -14,13 +14,13 @@ interface ButtonProps {
     textStyle?: object
 }
 
-export default function TouchableOpacityButton({
+export default function PressableButton({
     text, onPress, containerStyles, disabled = false, image = 0, image_url = '', imageStyle
     , textStyle
 }: ButtonProps) {
 
     return (
-        <TouchableOpacity
+        <Pressable
             onPress={onPress}
             disabled={disabled}
         >
@@ -52,7 +52,7 @@ export default function TouchableOpacityButton({
                     }
                 </View>
             </View>
-        </TouchableOpacity>
+        </Pressable>
     );
 };
 

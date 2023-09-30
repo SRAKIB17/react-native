@@ -5,7 +5,7 @@ import colors from '../../../utils/colors';
 import { global_styles } from '../../../styles/global';
 import currencyConvert from '../../../hooks/currencyConvert';
 import decimalPoint from '../../../hooks/decimalPoint';
-import TouchableOpacityButton from '../../../components/button/TouchableOpacityButton';
+import TouchableOpacityButton from '../../../components/button/PressableButton';
 import { assets_images } from '../../../assets/assets_images';
 
 export default function WishlistEachProduct(props: { product: eachProductInterface }) {

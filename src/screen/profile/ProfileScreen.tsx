@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
 import translate_each_word from '../../db/translate_each_word';
 import { default_theme, global_styles } from '../../styles/global';
@@ -9,7 +9,19 @@ import colors from '../../utils/colors';
 const user_info = {
     name: "MD Rakibul Islam",
     email: 'reakibulssc5@gmail.com',
-    profile: require('../../assets/images/male_avatar.png')
+    profile: require('../../assets/images/male_avatar.png'),
+    balance: 0,
+    birthday: "2023-08-19",
+    country: "Bangladesh",
+    defaultShippingAddress: 10000,
+    gender: "Male",
+    isBlock: 0,
+    lastLogin: "2023-09-30T09:23:57.000Z",
+    phone: "+8801873989651",
+    registered: "2023-08-11T16:57:10.000Z",
+    rewardCoins: 2100,
+    userID: 10000,
+    userType: 0
 }
 
 export default function ProfileScreen() {
@@ -45,7 +57,7 @@ export default function ProfileScreen() {
                         // const check = pathname === r.link;
                         return (
                             <View key={index}>
-                                <TouchableOpacity onPress={() => navigate(r?.link)}   >
+                                <Pressable onPress={() => navigate(r?.link)}   >
                                     <View style={styles.button}>
                                         <View style={styles.button_title_image}>
                                             <View>
@@ -73,7 +85,7 @@ export default function ProfileScreen() {
                                             />
                                         </View>
                                     </View>
-                                </TouchableOpacity>
+                                </Pressable>
                             </View>
                         )
                     })

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Dimensions, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import TouchableOpacityButton from '../../components/button/TouchableOpacityButton';
+import TouchableOpacityButton from '../../components/button/PressableButton';
 import { assets_images } from '../../assets/assets_images';
 import CartProductItem from './components/CartProductItem';
 import { NavigationProvider } from '../../navigators/NavigationContainer';

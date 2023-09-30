@@ -3,7 +3,7 @@ import { Image, SafeAreaView, StyleSheet, View, Text, Button, TouchableHighlight
 import Colors from '../../../utils/colors';
 import images_database from '../../../db/translate_each_word';
 import { assets_images } from '../../../assets/assets_images';
-import TouchableOpacityButton from '../../button/TouchableOpacityButton';
+import TouchableOpacityButton from '../../button/PressableButton';
 import { global_styles } from '../../../styles/global';
 import colors from '../../../utils/colors';
 import { NavigationProvider } from '../../../navigators/NavigationContainer';

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { Height } from '../utils/dimensions';
 
 export const default_theme = {
     primary: {
@@ -67,9 +68,16 @@ const font = StyleSheet.create({
 })
 
 export const global_styles = StyleSheet.create({
-    bg_primary: {
-        backgroundColor: default_theme?.primary?.bg,
-        color: default_theme?.primary?.text
+    container: {
+        flex: 1,
+        paddingTop: 16,
+        // paddingTop: StatusBar.currentHeight,
+        marginHorizontal: 16,
+    },
+    input: {
+        borderWidth: 1,
+        width: '100%',
+        height: Height(7)
     },
     ...text,
     ...font

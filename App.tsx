@@ -34,7 +34,8 @@ function App(): JSX.Element {
               {/* <SafeAreaView style={backgroundStyle}> */}
               <StatusBar
                 animated={true}
-                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+                barStyle='light-content'
+                // barStyle={isDarkMode ? 'light-content' : 'dark-content'}
                 backgroundColor={colors.primary}
                 // backgroundColor={backgroundStyle.backgroundColor}
                 showHideTransition={'fade'}

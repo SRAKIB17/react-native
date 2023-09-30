@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import { View, Text, Button, TouchableHighlight, TouchableOpacityBase, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
+import { View, Text, Button, TouchableHighlight, TouchableOpacityBase, StyleSheet, Image, TouchableOpacity, Linking, Pressable } from 'react-native';
 import { NavigationProvider } from '../../navigators/NavigationContainer';
-import Colors from '../../utils/colors';
 import translate_each_word from '../../db/translate_each_word';
+import colors from '../../utils/colors';
 
 
 export default function Footer() {
@@ -15,12 +15,11 @@ export default function Footer() {
                     const check = pathname === r.link;
                     return (
                         <View key={index}>
-                            <TouchableOpacity
+                            <Pressable
                                 onPress={() => navigate(r?.link)}
-                                // style={{ marginTop: -48 }}
                                 disabled={check}
                             >
-                                <View style={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'space-between' }}>
+                                <View style={styles.button}>
                                     <View
                                         style={check && styles.select_button}
                                     >
@@ -39,7 +38,7 @@ export default function Footer() {
                                         }
                                     </Text>
                                 </View>
-                            </TouchableOpacity>
+                            </Pressable>
                         </View>
                     )
                 })
@@ -51,7 +50,7 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
     footer: {
-        backgroundColor: 'transparent',
+        backgroundColor: colors.white,
         borderTopEndRadius: 24,
         borderTopStartRadius: 24,
         padding: 16,
@@ -60,6 +59,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        borderColor: colors.border_color,
+        borderWidth: 1,
 
         shadowColor: "#000",
         shadowOffset: {
@@ -80,16 +81,16 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: 12,
         borderRadius: 99999,
-        backgroundColor: Colors.primary,
+        backgroundColor: colors.primary,
     },
-
     button: {
+        gap: 2,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         flexDirection: 'column',
         height: 48,
-        width: 48,
+        minWidth: 48,
         padding: 4,
     },
     buttonGPlusStyle: {
